@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <title>Spring Security Example</title>
+    <style>table th, table td {padding: 5px;}</style>
+</head>
+<body>
+
+<h1>User, welcome spring boot security page!</h1>
+
+<table>
+<tr>
+    <th>name</th>
+    <th>job</th>
+    <th>age</th>
+    <th>password</th>
+    <th>roles</th>
+</tr>
+
+
+<tr th:each="user : ${user}">
+    <td th:text="${user.username}"></td>
+    <td th:text="${user.job}"></td>
+    <td th:text="${user.age}"></td>
+    <td th:text="${user.password}"></td>
+    <td>
+        <div th:each="role : ${user.roles}">
+            <p th:text="${role.role}"></p>
+        </div>
+    </td>
+</tr>
+</table>
+<form th:action="@{logout}">
+    <input type="submit" value="Logout">
+</form>
+<form th:action="@{admin}">
+    <input type="submit" value="Admin panel">
+</form>
+</body>
+</html>
+
+
+
